@@ -1,0 +1,18 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "BrightFutures",
+      "reason": null,
+      "repositoryURL": "https://github.com/Thomvis/BrightFutures",
+      "version": "5.2.0"
+    },
+    {
+      "package": "Result",
+      "reason": null,
+      "repositoryURL": "https://github.com/antitypical/Result.git",
+      "version": "3.2.1"
+    }
+  ],
+  "version": 1
+}
