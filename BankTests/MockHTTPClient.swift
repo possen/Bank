@@ -18,11 +18,11 @@ class MockHTTPClient : HTTPClient {
     let json : JSON
     
     init(filename: String) {
-        let testBundle = Bundle(for: type(of:self)) 
+        let testBundle = Bundle(for: type(of:self))
         guard let resourceURL = testBundle.url(forResource: filename, withExtension: "json"),
               let data = try? Data(contentsOf: resourceURL),
               let j = try? JSONSerialization.jsonObject(with: data, options: []) else { json = [] ; return }
-        
+
         json = j
     }
     

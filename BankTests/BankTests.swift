@@ -24,7 +24,7 @@ class BankTests: XCTestCase {
     }
     
     func testAllPost() {
-        let client = MockHTTPClient(filename: "allData")
+        let client = MockHTTPClient(filename: "allData") 
         let expectation = self.expectation(description: "testAllPost")
         
         client.post(query: getAll, parameters: nil)
@@ -59,7 +59,7 @@ class BankTests: XCTestCase {
     }
     
     func testDataStoreBadRequestFetch() {
-        let client = MockHTTPClient(filename: "BadRequest")
+        let client = MockHTTPClient(filename: "BadRequest") 
         let expectation = self.expectation(description: "testDataStoreBadRequestFetch")
         let store = DataStore()
         store.httpClient = client

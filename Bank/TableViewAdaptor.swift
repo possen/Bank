@@ -103,7 +103,7 @@ class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, Ta
         return sections[indexPath.section].height
     }
     
-    func update() {
+    public func update() {
         DispatchQueue.main.async {
             self.didChangeHandler()
         }

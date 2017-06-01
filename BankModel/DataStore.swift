@@ -22,6 +22,7 @@ class DataStore {
     weak var delegate : TableViewDataManagerDelegate? = nil
     var httpClient : HTTPClient = HTTPClientInstance()
     var coellated : [Month] = []
+    var dataLoaded : (() -> Void)? = nil
 
     var transactions : [Transaction] = [] {
         didSet {
@@ -35,6 +36,12 @@ class DataStore {
         }.onSuccess { transactions in
             self.transactions = transactions
             self.coellate(transactions: transactions)
+        }.onFailure { error in
+            print(error)
+        }.andThen { (_) in
+            if let dataLoaded = self.dataLoaded {
+                dataLoaded()
+            }
         }
     }
     
@@ -93,7 +100,7 @@ class DataStore {
                     completion(.failure(createError(code: .parse)))
                     return
                 }
-                
+                print(response)
                 if let transactionJSON = response["transactions"] as? [[String: Any]] {
                     
                     let transactions = createTransactions(jsonObjects: transactionJSON)

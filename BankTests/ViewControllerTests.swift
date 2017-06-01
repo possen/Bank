@@ -16,10 +16,27 @@ class ViewControllerTests: XCTestCase {
     }
     
     func testViewControllerLoad() {
-        let vc = TransactionsViewController()
-        vc.store.httpClient = MockHTTPClient(filename: "allData")
-        _ = vc.view
+        let expectation = self.expectation(description: "testViewControllerLoad")
 
+        let vc = TransactionsViewController()
+        _ = vc.view
+        let client = MockHTTPClient(filename: "allData")
+        vc.store.httpClient = client
+        
+        
+        vc.store.dataLoaded = {
+            // make sure the table view is fully loaded before fullfilling. 
+            DispatchQueue.main.async {
+                vc.tableView.reloadData()
+                expectation.fulfill()
+            }
+        }
+        
+        wait(for: [expectation], timeout: 120)
+        
+        XCTAssertGreaterThan(vc.store.transactions.count, 10)
+        XCTAssertGreaterThanOrEqual(vc.tableView.numberOfSections,  1)
+        XCTAssertGreaterThan(vc.tableView.numberOfRows(inSection: 0), 10)
     }
     
 }
