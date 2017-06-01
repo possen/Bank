@@ -17,8 +17,9 @@ class ViewControllerTests: XCTestCase {
     
     func testViewControllerLoad() {
         let vc = TransactionsViewController()
-        vc.store.httpClient = MockHTTPClient(filename:"allData")
-        vc.loadView()
+        vc.store.httpClient = MockHTTPClient(filename: "allData")
+        _ = vc.view
+
     }
     
 }

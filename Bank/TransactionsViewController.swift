@@ -15,7 +15,7 @@ class TransactionsViewController: UITableViewController {
     private var transactionDataManagerTableViewAdaptor : TableViewAdaptor!
 
     var store = DataStore()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
