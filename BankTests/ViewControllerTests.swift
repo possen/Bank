@@ -17,12 +17,11 @@ class ViewControllerTests: XCTestCase {
     
     func testViewControllerLoad() {
         let expectation = self.expectation(description: "testViewControllerLoad")
-
-        let vc = TransactionsViewController()
-        _ = vc.view
-        let client = MockHTTPClient(filename: "allData")
-        vc.store.httpClient = client
         
+        let client = MockHTTPClient(filename: "allData")
+        let vc = TransactionsViewController()
+        vc.store.httpClient = client
+        _ = vc.view
         
         vc.store.dataLoaded = {
             // make sure the table view is fully loaded before fullfilling. 

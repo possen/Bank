@@ -18,6 +18,7 @@ class TransactionsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        store.httpClient = MockHTTPClient(filename: "allData")
         
         transactionDataManagerTableViewAdaptor = TableViewAdaptor (
             tableView: tableView,
@@ -34,16 +35,26 @@ class TransactionsViewController: UITableViewController {
         )
         
         store.delegate = transactionDataManagerTableViewAdaptor
-        tableView.dataSource = transactionDataManagerTableViewAdaptor
-        tableView.delegate = transactionDataManagerTableViewAdaptor
 
         store.fetch()
             .onSuccess { transactions in
                 print("loaded \(transactions.count) transactions")
             }.onFailure { error in
-                print(error)
+                self.displayError(error)
             }
     }
+    
+    fileprivate func displayError(_ error: (Error)) {
+        print(error)
+        let alert = UIAlertController(title: "NetworkError", message: "error \(error)", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            alert.dismiss(animated: true, completion: {})
+        })
+        alert.addAction(okAction)
+        alert.popoverPresentationController?.sourceView = view
+        self.present(alert, animated: true, completion: {})
+    }
+    
     
     func adaptor(month : Month) -> TableViewAdaptorSection<TransactionCell, Transaction> {
         let formatter = Cento.currencyFormatter()
