@@ -9,10 +9,12 @@ import Foundation
 import BrightFutures
 import Result
 
+// Because the token expired, this is always used rather than a network request.
+//
 // Might use a mocking library here, but the dependency injection works pretty well with the
 // protocol interface. 
 
-@testable import Bank
+//@testable import Bank
 
 class MockHTTPClient : HTTPClient {
     let json : JSON
@@ -27,10 +29,10 @@ class MockHTTPClient : HTTPClient {
     }
     
     
-    public func post(query: String, parameters:[String: String]?) -> Future<JSON, NSError> {
+    fileprivate func validateNetRequest() -> Future<JSON, NSError> {
         return Future<JSON, NSError> { completion in
             guard let json = self.json as? [String: Any],
-                  json["error"] as! String == "no-error" else {
+                json["error"] as! String == "no-error" else {
                     completion(.failure(NSError(domain: "failed", code: 20, userInfo: nil)))
                     return
             }
@@ -38,14 +40,11 @@ class MockHTTPClient : HTTPClient {
         }
     }
     
+    public func post(query: String, parameters:[String: String]?) -> Future<JSON, NSError> {
+        return validateNetRequest()
+    }
+    
     public func get(query: String, parameters:[String: String]?) -> Future<JSON, NSError> {
-        return Future<JSON, NSError> { completion in
-            guard let json = self.json as? [String: Any],
-                  json["error"] as! String == "no-error" else {
-                    completion(.failure(NSError(domain: "failed", code: 20, userInfo: nil)))
-                    return
-            }
-            completion(.success(self.json))
-        }
+        return validateNetRequest()
     }
 }
