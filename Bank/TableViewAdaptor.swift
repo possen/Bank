@@ -94,12 +94,16 @@ class TableViewAdaptor: NSObject, UITableViewDataSource, UITableViewDelegate, Ta
         return cell
     }
     
+    fileprivate func isEmpty(_ section: Int) -> Bool {
+        return sections[section].itemCount != 0
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sections[section].itemCount != 0 ? headerHeight : 0.01
+        return isEmpty(section) ? headerHeight : 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return sections[section].itemCount != 0 ? footerHeight : 0.01
+        return isEmpty(section) ? footerHeight : 0.01
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
