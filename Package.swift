@@ -6,6 +6,6 @@ let package = Package(
     name: "Bank",
     targets: [],
     dependencies: [
-        .Package(url: "https://github.com/Thomvis/BrightFutures", majorVersion: 5)
+        .Package(url: "https://github.com/possen/BrightFutures", majorVersion: 5)
     ]
 )
