@@ -28,7 +28,6 @@ class MockHTTPClient : HTTPClient {
         json = j
     }
     
-    /Users/possen/Projects/Bank/BankTests/MockHTTPClient.swift
     fileprivate func validateNetRequest() -> Future<JSON, NSError> {
         return Future<JSON, NSError> { completion in
             guard let json = self.json as? [String: Any],
