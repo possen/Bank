@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "BrightFutures",
+        "repositoryURL": "https://github.com/possen/BrightFutures",
+        "state": {
+          "branch": null,
+          "revision": "f18744a3061d2302a3673aafdb6fbdbbfe9b4f6f",
+          "version": "5.2.0"
+        }
+      },
+      {
+        "package": "Result",
+        "repositoryURL": "https://github.com/antitypical/Result.git",
+        "state": {
+          "branch": null,
+          "revision": "c8446185238659a2b27c0261f64ff1254291d07d",
+          "version": "3.2.3"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
