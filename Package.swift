@@ -1,11 +1,11 @@
-// swift-tools-version:3.1
+// swift-tools-version:4.0
 
 import PackageDescription
 
 let package = Package(
     name: "Bank",
-    targets: [],
     dependencies: [
-        .Package(url: "https://github.com/possen/BrightFutures", majorVersion: 5)
-    ]
+    .package(url: "https://github.com/possen/BrightFutures", .branch("swift4.0beta"))
+    ],
+    targets: []
 )

@@ -5,9 +5,9 @@
         "package": "BrightFutures",
         "repositoryURL": "https://github.com/possen/BrightFutures",
         "state": {
-          "branch": null,
-          "revision": "f18744a3061d2302a3673aafdb6fbdbbfe9b4f6f",
-          "version": "5.2.0"
+          "branch": "swift4.0beta",
+          "revision": "531ce05ad915eaaf69544c46223b54ff0d1b3ac2",
+          "version": null
         }
       },
       {
