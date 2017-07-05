@@ -350,7 +350,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5DC81261EC2A3A300C3F51F /* Build configuration list for PBXNativeTarget "Bank" */;
 			buildPhases = (
-				D5EF629C1F0C5441009D2543 /* ShellScript */,
 				D5DC81101EC2A3A300C3F51F /* Sources */,
 				D5DC81111EC2A3A300C3F51F /* Frameworks */,
 				D5DC81121EC2A3A300C3F51F /* Resources */,
@@ -492,22 +491,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D5EF629C1F0C5441009D2543 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "swift package update";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D5DC81101EC2A3A300C3F51F /* Sources */ = {
